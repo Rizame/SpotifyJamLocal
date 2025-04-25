@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Playlist</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="functionality.js"></script>
+
+</head>
+<body class="bg-gray-100">
+
+
+<!-- Search Bar -->
+<!-- Header -->
+<div class="w-full sticky top-0 z-50 flex items-center justify-center gap-2 px-4 py-2 bg-transparent">
+  <div class="flex max-w-lg w-full items-center gap-2">
+    <input type="text" placeholder="Search for a song..." class="search-bar flex-grow rounded max-w-lg w-full"/>
+    <button id="search-btn" class="button ml-4" onclick="searchSongs()">Search</button>
+  </div>
+</div>
+<div id="device-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+  <div class="bg-white p-4 rounded-lg shadow-lg w-96">
+    <h2 class="text-lg font-bold mb-4">Select a Device</h2>
+    <div id="device-list" class="space-y-2">
+      <!-- Devices will be added here dynamically -->
+    </div>
+    <button onclick="closeDeviceOverlay()" class="mt-4 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700">Cancel</button>
+  </div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="overlay-content">
+    <h2>Choose a Track</h2>
+    <div class="track-list" id="track-list"></div>
+    <button onclick="closeOverlay()">Close</button>
+  </div>
+</div>
+<div class="container mx-auto py-8 flex">
+  <!-- Left side: Playlist -->
+  <div class="w-1/2 pr-4">
+    <h1 class="text-3xl font-bold mb-6 text-center w-full">Playlist Queue:</h1>
+    <div id="song-list" class="mt-20 space-y-4">
+      <!-- Song items -->
+    </div>
+    <button id="prev-btn" class="button" onclick="changePage(-1)">Previous</button>
+    <button id="next-btn" class="button" onclick="changePage(1)">Next</button>
+    <button id="next-btn" class="button" onclick="skipSong()">Skip</button>
+    <button id="device-btn" class="button" onclick="chooseDevice()">Device</button>
+    <button id="update-btn" class="button" onclick="getTracksFromDatabase()">Update</button>
+  </div>
+
+  <!-- Right side: Other Content -->
+  <div class="w-1/2 p-4 flex flex-col items-center">
+    <h1 class="text-3xl font-bold mb-6 text-center w-full">Playing now:</h1>
+  
+    <div id="song-preview" class="mt-20 space-y-4 flex flex-col items-center text-center">
+      <img id="preview-image" class="w-72 h-72 mb-4 object-cover">
+      <span id="preview-title" class="text-2xl mb-4"></span>
+      
+      <div class="flex space-x-4">
+        <button id="play-btn" onclick="togglePlayback(true)" class="bg-gray-400 text-black px-6 py-3 text-lg font-bold border-none rounded-full hover:scale-105 hover:shadow-lg transition-all">
+          <span class="font-mono">&#9654;</span> 
+        </button>
+        <button id="pause-btn" onclick="togglePlayback(false)" class="bg-gray-400 text-black px-6 py-3 text-lg font-bold border-none rounded-full hover:scale-105 hover:shadow-lg transition-all">
+          <span class="font-mono">&#10074;&#10074;</span> 
+        </button>
+      </div>
+  
+      <!-- Progress bar -->
+      <div id="progress-container" class="w-full bg-gray-300 rounded-full h-2.5 mt-4">
+        <div id="progressBar" class="bg-green-500 h-2.5 rounded-full" style="width: 0%;"></div>
+      </div>
+      <p id="time-info" class="text-sm text-gray-600 mt-2">0:00 / 0:00</p>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
