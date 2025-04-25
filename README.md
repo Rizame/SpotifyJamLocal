@@ -1,6 +1,7 @@
 A great option for those who are not using spotify but their friends DO, or they just simply do not have the premium subscription: A local alternative for the spotify "Jam" feature!
+Great solution for when you gather with friends where not everyone has spotify premium and you dont want to constantly take the phone one by one,<br> adding your songs, seeing what is currently playing, stopping/resumging the playback.
 
-full-stack music control web application hosted on an ESP32, allowing collaborative playlist management using one Spotify Premium account. Fulle implemented through untegration of Spotify's Web API to support features such as:
+This is a full-stack music control web application hosted on an ESP32, allowing collaborative playlist management using one Spotify Premium account. Fully implemented through untegration of Spotify's Web API to support features such as:
 Searching and adding tracks to the queue
 Skipping, pausing, or resuming playback
 Viewing the currently playing song with metadata
@@ -16,13 +17,15 @@ Upon entering the main page, depending on whether anything is actively playing o
 ![image](https://github.com/user-attachments/assets/03e4422d-1cf9-45fe-8d9a-bb6bc2eaf1c2)
 
 Then the user must choose his active device where he wants to manipulate music with "Device" button, and after will be able to freely use other features like song search, skip.
+![image](https://github.com/user-attachments/assets/a5ee5d78-022d-45ac-bb49-b6631227498c)
+
 Playback change buttons may be used in any case as they manipulate the account adirectly, not depending on a device.
 ![image](https://github.com/user-attachments/assets/adc665db-7149-4a1d-b3f6-eb853e0c5539)
 Here a list of Top 5 options for a given search are shown, user must click on whatever amount of songs he wants to add and then click close button.
 All of the songs will be added to the spotify account queue and also will be shown in queue on the web page:
 ![image](https://github.com/user-attachments/assets/ff7767fd-62ac-4ca2-b57b-b6a4a8e75561)
-![image](https://github.com/user-attachments/assets/6d688fa6-fe68-489a-b2d2-b55c7ea06acf)
-Lastly, whenever the program spots song from a queue playing - upon its end, or if its skipped, etc the song will then be deleted from the list.
+![image](https://github.com/user-attachments/assets/6d688fa6-fe68-489a-b2d2-b55c7ea06acf) 
+<br> Lastly, whenever the program spots song from a queue playing - upon its end, or if its skipped, etc the song will then be deleted from the list.
 
 
 
